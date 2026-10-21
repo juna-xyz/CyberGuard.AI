@@ -1,0 +1,34 @@
+{
+  "projectSlug": "cyberguard-ai",
+  "totalFRs": 3,
+  "totalScreens": 3,
+  "screens": [
+    {
+      "frId": "FR-01",
+      "screenId": "screen-01-dashboard",
+      "title": "Pusat Edukasi & Dashboard Keamanan Digital",
+      "route": "/",
+      "purpose": "Menyajikan fondasi literasi siber, kerangka Think Before You Click, ringkasan 4 taktik rekayasa sosial, dan navigasi utama ke analisis dan kuis",
+      "primaryComponent": "SplitHeroEducationModule",
+      "stitchPromptBrief": "A modern, highly trustworthy digital safety learning dashboard in light mode. Centered around a 60/40 asymmetric split hero with a prominent typography headline 'Kenali Manipulasi Digital Sebelum Terlambat', deep navy text (#152238), restrained teal CTA button (#176B68), clean white surfaces, hairline borders (#DCE4ED), an interactive 3-step action guide, and a 4-card grid detailing social engineering tactics. Clean, academic, and practical without generic dark hacker tropes."
+    },
+    {
+      "frId": "FR-02",
+      "screenId": "screen-02-analyzer",
+      "title": "Penganalisis Pesan Forensik Berbasis Bukti",
+      "route": "/analyzer",
+      "purpose": "Menganalisis teks pesan mencurigakan berbasis aturan heuristik bukti nyata dengan estimasi risiko kualitatif transparan tanpa angka persentase palsu",
+      "primaryComponent": "ForensicMessageInspector",
+      "stitchPromptBrief": "A clinical and focused cybersecurity forensic analysis tool in light mode. Features a clean multiline textarea with a character counter, pre-filled scenario buttons for quick testing, a yellow-tinted privacy caution box, and a rich results card showing a bold qualitative risk badge (High/Medium/Low), tagged evidence chips, plain-language reasoning, and a mitigation checklist. Clear empty and loading states included."
+    },
+    {
+      "frId": "FR-03",
+      "screenId": "screen-03-quiz",
+      "title": "Kuis Keputusan Siber Interaktif",
+      "route": "/quiz",
+      "purpose": "Melatih pengambilan keputusan keamanan siber melalui 5 skenario studi kasus kontekstual Indonesia dengan umpan balik edukatif seketika",
+      "primaryComponent": "InteractiveScenarioQuizCard",
+      "stitchPromptBrief": "An interactive, educational single-question scenario quiz screen in light mode. Displays a clean linear progress indicator, a prominent framed simulation card depicting a realistic message bubble, three distinct card-style decision options with radio selectors, an immediate color-coded educational feedback drawer, and an accessible end-of-quiz score review screen."
+    }
+  ]
+}

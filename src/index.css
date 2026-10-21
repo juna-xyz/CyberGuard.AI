@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 60% Canvas & Background Surfaces */
+  --color-canvas: #F7F9FC;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #EEF3F8;
+
+  /* 30% Structural Hairlines & Typography Ink */
+  --color-hairline: #DCE4ED;
+  --color-hairline-strong: #C4D1DF;
+  --color-ink: #152238;
+  --color-ink-muted: #5D6B80;
+  --color-ink-subtle: #8996A9;
+
+  /* 10% Primary Brand Accent (Restrained Teal) */
+  --color-brand: #176B68;
+  --color-brand-hover: #105653;
+  --color-brand-soft: #E2F3F0;
+  --color-brand-border: #A3D5CD;
+
+  /* Semantic Qualitative Risk Colors */
+  --color-risk-high: #B93838;
+  --color-risk-high-soft: #FDECEC;
+  --color-risk-high-border: #F7B8B8;
+
+  --color-risk-medium: #9A5B08;
+  --color-risk-medium-soft: #FFF3D8;
+  --color-risk-medium-border: #F9DA9C;
+
+  --color-risk-low: #24734A;
+  --color-risk-low-soft: #E6F6EC;
+  --color-risk-low-border: #A2E2BD;
+
+  /* Corner Radii */
+  --radius-badge: 6px;
+  --radius-control: 10px;
+  --radius-card: 16px;
+  --radius-modal: 20px;
+
+  /* Elevation & Shadows */
+  --shadow-subtle: 0 1px 3px rgba(21, 34, 56, 0.05), 0 1px 2px rgba(21, 34, 56, 0.03);
+  --shadow-card: 0 4px 12px rgba(21, 34, 56, 0.04), 0 1px 2px rgba(21, 34, 56, 0.02);
+  --shadow-popover: 0 12px 24px rgba(21, 34, 56, 0.08), 0 4px 8px rgba(21, 34, 56, 0.04);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Accessible focus visible utility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
