@@ -176,3 +176,4 @@ Pipeline ini dirancang untuk mencegah tampilan umum template AI murah:
 - **Disiplin Font Tunggal:** Satu font family utama Sans-Serif (misal: *Plus Jakarta Sans* atau *Inter*) untuk konsistensi seluruh dashboard.
 - **Hierarki Bobot & Spasi:** Pembedaan hierarki visual dilakukan lewat bobot (`font-medium` vs `font-bold`), kontras teks semantik, dan whitespace ritmis, bukan menambah font acak.
 - **Aturan 60-30-10:** Mencegah tampilan UI yang terlalu ramai atau penuh gradasi neon yang menyakitkan mata.
+# CyberGuard.AI
