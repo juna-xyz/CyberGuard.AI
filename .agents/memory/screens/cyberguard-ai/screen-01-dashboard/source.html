@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CyberGuard.AI — Pusat Edukasi &amp; Dashboard Keamanan Digital</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#89d3cf",
+            "surface-tint": "#146966",
+            "secondary": "#525f78",
+            "surface": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-dim": "#ccdbf3",
+            "primary-container": "#176b68",
+            "on-tertiary-fixed-variant": "#005137",
+            "surface-container": "#e6eeff",
+            "on-secondary-container": "#56637c",
+            "surface-container-high": "#dce9ff",
+            "inverse-primary": "#89d3cf",
+            "surface-container-low": "#eff4ff",
+            "error": "#ba1a1a",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#85f8c4",
+            "background": "#f8f9ff",
+            "tertiary-fixed-dim": "#68dba9",
+            "on-secondary-fixed": "#0e1c31",
+            "secondary-fixed": "#d7e3ff",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary-fixed-variant": "#3a475f",
+            "primary-fixed": "#a5f0eb",
+            "on-background": "#0e1c2e",
+            "primary": "#00524f",
+            "secondary-container": "#d3e0fe",
+            "on-tertiary-container": "#7df1bd",
+            "on-primary-container": "#9ee9e4",
+            "outline-variant": "#bec9c7",
+            "secondary-fixed-dim": "#bac7e4",
+            "outline": "#6f7978",
+            "on-primary-fixed-variant": "#00504d",
+            "surface-variant": "#d5e3fc",
+            "inverse-surface": "#233144",
+            "on-surface": "#0e1c2e",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3f4948",
+            "tertiary-container": "#006e4c",
+            "on-tertiary-fixed": "#002114",
+            "surface-container-highest": "#d5e3fc",
+            "tertiary": "#005338",
+            "surface-bright": "#f8f9ff",
+            "on-primary-fixed": "#00201f",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1.25rem",
+            "gutter": "1.5rem",
+            "margin": "3rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-display-mobile": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "label-lg": ["Inter", "sans-serif"],
+            "headline-display": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["17px", { "lineHeight": "27px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-display": ["44px", { "lineHeight": "54px", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["19px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-editorial-border {
+      border: 1px solid #DCE4ED;
+    }
+    .hero-split-shadow {
+      box-shadow: 0 4px 20px -2px rgba(21, 34, 56, 0.05), 0 2px 6px -1px rgba(21, 34, 56, 0.03);
+    }
+    .code-inspect-strip {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#F7F9FC] text-[#152238] font-body-md antialiased selection:bg-[#E2F3F0] selection:text-[#00524f]">
+<!-- Top Navigation Bar (Shared Component Anchor) -->
+<header class="w-full sticky top-0 z-50 border-b border-outline-variant bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<div class="max-w-[1280px] mx-auto px-6 h-18 flex items-center justify-between">
+<!-- Brand & Badge -->
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#E2F3F0] flex items-center justify-center text-[#176B68]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">CyberGuard.AI</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-[#E2F3F0] text-[#176B68] border border-[#176B68]/20 tracking-normal">
+            Edukasi &amp; Riset
+          </span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-label-lg border-b-2 border-primary pb-1 transition-colors duration-150" href="#beranda">
+          Beranda
+        </a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary pb-1 transition-colors duration-150" href="#analisis">
+          Analisis Pesan
+        </a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary pb-1 transition-colors duration-150" href="#kuis">
+          Kuis Interaktif
+        </a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary pb-1 transition-colors duration-150" href="#panduan">
+          Panduan
+        </a>
+</nav>
+<!-- Trailing Action -->
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-2 bg-[#176B68] hover:bg-[#105653] text-white px-4 py-2.5 rounded-lg text-label-lg font-label-lg transition duration-150 shadow-sm active:translate-y-px" href="#analisis">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+<span>Cek Pesan Mencurigakan</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Container -->
+<main class="max-w-[1280px] mx-auto px-6 py-10 space-y-20">
+<!-- Hero Section (60/40 Asymmetric Split) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center" id="beranda">
+<!-- Left Column (60%) -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Live Category Pill -->
+<div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#E2F3F0] border border-[#176B68]/20 text-[#176B68]">
+<span class="w-2 h-2 rounded-full bg-[#176B68] animate-pulse"></span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider font-semibold">Edukasi Keamanan Digital Indonesia</span>
+</div>
+<!-- H1 Headline -->
+<h1 class="text-headline-display font-headline-display text-[#152238] tracking-tight">
+          Kenali Manipulasi Digital Sebelum Terlambat
+        </h1>
+<!-- Subheadline / Value Proposition -->
+<p class="text-body-lg font-body-lg text-[#5D6B80] max-w-2xl leading-relaxed">
+          Tingkatkan ketajaman naluri siber Anda. Analisis pesan mencurigakan secara transparan dan latih refleks keamanan dengan skenario nyata penipuan digital Indonesia.
+        </p>
+<!-- CTA Cluster -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="inline-flex items-center gap-2.5 bg-[#176B68] hover:bg-[#105653] text-white px-6 py-3.5 rounded-lg text-label-lg font-label-lg transition-all duration-150 active:translate-y-px shadow-sm" href="#analisis">
+<span>Mulai Analisis Pesan</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2.5 bg-surface-container-lowest hover:bg-[#F7F9FC] text-[#152238] border border-[#DCE4ED] hover:border-[#176B68] px-5 py-3.5 rounded-lg text-label-lg font-label-lg transition duration-150" href="#kuis">
+<span class="material-symbols-outlined text-[20px] text-[#176B68]">psychology</span>
+<span>Ikuti Kuis Simulasi</span>
+</a>
+</div>
+<!-- Trust Badges Row -->
+<div class="pt-4 flex flex-wrap items-center gap-3">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#DCE4ED] text-[#5D6B80] text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#059669]">check_circle</span>
+<span>100% Heuristik Lokal</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#DCE4ED] text-[#5D6B80] text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#176B68]">lock</span>
+<span>Privasi Terlindungi (Tanpa Simpan Data)</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#DCE4ED] text-[#5D6B80] text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#176B68]">shield</span>
+<span>Sesuai Konteks Indonesia</span>
+</div>
+</div>
+</div>
+<!-- Right Column (40% - Inspection Interface Preview Card) -->
+<div class="lg:col-span-5 relative">
+<!-- Floating Brand Anchor Pill -->
+<div class="absolute -top-3.5 right-6 z-10 bg-[#152238] text-white px-3.5 py-1 rounded-full text-label-sm font-label-sm shadow-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">lightbulb</span>
+<span>Think Before You Click</span>
+</div>
+<!-- Structured Inspection Card -->
+<div class="bg-surface-container-lowest rounded-xl custom-editorial-border p-6 hero-split-shadow space-y-5 relative">
+<!-- Card Header & Badge -->
+<div class="flex items-center justify-between border-b border-[#DCE4ED] pb-4">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#DC2626]"></span>
+<span class="text-headline-sm font-headline-sm text-[#152238] text-[16px]">Simulasi Inspeksi WhatsApp</span>
+</div>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#FEF2F2] text-[#DC2626] border border-[#DC2626]/20 uppercase tracking-wider">
+              Terdeteksi Berisiko Tinggi
+            </span>
+</div>
+<!-- Message Box Simulation -->
+<div class="rounded-lg bg-[#F8FAFD] border border-[#DCE4ED] p-4 space-y-3">
+<div class="flex items-center justify-between text-label-sm text-[#5D6B80] pb-1 border-b border-[#DCE4ED]/60">
+<span class="flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px]">smartphone</span> +62 821-4921-XXXX (Tidak Dikenal)
+              </span>
+<span>14:02 WIB</span>
+</div>
+<p class="text-body-sm font-body-sm text-[#152238] leading-relaxed">
+              "Halo Bapak/Ibu, paket pengiriman resi J&amp;X Anda tertahan di gudang logistik. Mohon segera unduh &amp; pasang file <span class="bg-[#FEF2F2] text-[#DC2626] px-1 py-0.5 rounded font-semibold underline decoration-wavy decoration-[#DC2626]">Surat_Resi_Pengiriman.apk</span> untuk verifikasi pelacakan sebelum dibatalkan otomatis sore ini."
+            </p>
+</div>
+<!-- Interactive Highlight Tags -->
+<div class="space-y-2">
+<div class="text-label-sm font-label-sm text-[#5D6B80] uppercase tracking-wider">Temuan Vektor Serangan:</div>
+<div class="grid grid-cols-1 gap-2">
+<div class="flex items-start gap-2.5 p-2 rounded bg-surface-container-lowest border border-[#DCE4ED] text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-[#DC2626] shrink-0 mt-0.5">warning</span>
+<div>
+<span class="font-semibold text-[#DC2626]">[Bahaya 1: Ekstensi File .APK]</span>
+<p class="text-[12px] text-[#5D6B80] mt-0.5">Modus sniffer Trojan untuk membajak izin SMS OTP perbankan korban.</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded bg-surface-container-lowest border border-[#DCE4ED] text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-[#D97706] shrink-0 mt-0.5">schedule</span>
+<div>
+<span class="font-semibold text-[#D97706]">[Bahaya 2: Urgensi Palsu]</span>
+<p class="text-[12px] text-[#5D6B80] mt-0.5">Manipulasi psikologi agar korban terburu-buru mengabaikan akal sehat.</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded bg-surface-container-lowest border border-[#DCE4ED] text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-[#DC2626] shrink-0 mt-0.5">link_off</span>
+<div>
+<span class="font-semibold text-[#DC2626]">[Bahaya 3: Saluran Tak Resmi]</span>
+<p class="text-[12px] text-[#5D6B80] mt-0.5">Ekspedisi resmi hanya melacak lewat web domain berakhiran resmi (.co.id) atau aplikasi marketplace.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Confidence Meter -->
+<div class="pt-2 border-t border-[#DCE4ED]">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-label-sm font-label-sm text-[#152238] font-semibold">Skor Keamanan Heuristik</span>
+<span class="text-label-sm font-label-sm text-[#DC2626] font-bold">12 / 100 (Sangat Berbahaya)</span>
+</div>
+<div class="w-full bg-[#EAEFF5] h-2.5 rounded-full overflow-hidden">
+<div class="bg-[#DC2626] h-full rounded-full transition-all duration-500" style="width: 12%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3-Step Action Guide Section ("Kerangka Pikir 3 Langkah") -->
+<section class="space-y-8 pt-6 border-t border-[#DCE4ED]" id="panduan">
+<div class="max-w-2xl">
+<span class="text-label-sm font-label-sm text-[#176B68] font-bold uppercase tracking-wider block mb-1">
+          METODOLOGI PERLINDUNGAN DIRI
+        </span>
+<h2 class="text-headline-lg font-headline-lg text-[#152238]">
+          Kerangka Sederhana: Think Before You Click
+        </h2>
+<p class="text-body-md font-body-md text-[#5D6B80] mt-2">
+          Tiga disiplin mental sederhana yang terbukti mematahkan 95% rekayasa sosial sebelum terjadi kerugian finansial atau peretasan data pribadi.
+        </p>
+</div>
+<!-- 3 Step Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 relative flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-[#DCE4ED]">
+<span class="text-[28px] font-extrabold text-[#176B68] tracking-tight">01</span>
+<div class="w-10 h-10 rounded-full bg-[#E2F3F0] flex items-center justify-center text-[#176B68]">
+<span class="material-symbols-outlined">crisis_alert</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-[#152238] mt-4 mb-2">Kenali Tanda Bahaya</h3>
+<p class="text-body-md font-body-md text-[#5D6B80] leading-relaxed">
+              Waspadai pesan yang memicu panik atau euforia berlebih. Periksa nomor pengirim asing, lampiran berkas ekstensi <span class="text-[#DC2626] font-semibold">.apk</span>, atau tautan dengan domain pendek (bit.ly/tinyurl).
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-[#DCE4ED] flex items-center gap-1.5 text-label-sm text-[#176B68] font-semibold">
+<span class="material-symbols-outlined text-[16px]">radar</span>
+<span>Deteksi Refleks Awal</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 relative flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-[#DCE4ED]">
+<span class="text-[28px] font-extrabold text-[#176B68] tracking-tight">02</span>
+<div class="w-10 h-10 rounded-full bg-[#E2F3F0] flex items-center justify-center text-[#176B68]">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-[#152238] mt-4 mb-2">Uji Bukti Secara Kritis</h3>
+<p class="text-body-md font-body-md text-[#5D6B80] leading-relaxed">
+              Lakukan verifikasi silang (cross-check). Cari riwayat identitas nomor pengirim via Getcontact / Truecaller, atau hubungi pusat kontak resmi institusi secara terpisah dari jalur pesan tersebut.
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-[#DCE4ED] flex items-center gap-1.5 text-label-sm text-[#176B68] font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Validasi Multi-Kanal</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 relative flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-[#DCE4ED]">
+<span class="text-[28px] font-extrabold text-[#176B68] tracking-tight">03</span>
+<div class="w-10 h-10 rounded-full bg-[#E2F3F0] flex items-center justify-center text-[#176B68]">
+<span class="material-symbols-outlined">security</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-[#152238] mt-4 mb-2">Ambil Tindakan Tepat</h3>
+<p class="text-body-md font-body-md text-[#5D6B80] leading-relaxed">
+              Jangan sentuh tombol atau tautan. Langsung blokir nomor kontak, ambil tangkapan layar untuk arsip bukti, dan teruskan laporan ke portal resmi seperti AduanKonten Kominfo atau CekRekening.id.
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-[#DCE4ED] flex items-center gap-1.5 text-label-sm text-[#059669] font-semibold">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span>Netralisasi &amp; Pelaporan</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4 Social Engineering Tactics Grid -->
+<section class="space-y-8 pt-6 border-t border-[#DCE4ED]">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="max-w-2xl">
+<span class="text-label-sm font-label-sm text-[#176B68] font-bold uppercase tracking-wider block mb-1">
+            TAKTIK POPULER DI INDONESIA
+          </span>
+<h2 class="text-headline-lg font-headline-lg text-[#152238]">
+            Pahami Cara Pelaku Memanipulasi Psikologi Korban
+          </h2>
+<p class="text-body-md font-body-md text-[#5D6B80] mt-1">
+            Penyerang siber jarang meretas mesin enkripsi; mereka meretas kelengahan manusia lewat rasa takut, serakah, dan kepatuhan.
+          </p>
+</div>
+<div class="shrink-0">
+<span class="text-label-md font-label-md text-[#5D6B80] bg-white border border-[#DCE4ED] px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#176B68]"></span>
+            Dianalisis dari 12.000+ Laporan Publik
+          </span>
+</div>
+</div>
+<!-- 2x2 Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Urgensi Palsu -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 border-l-4 border-l-[#DC2626] flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm bg-[#FEF2F2] text-[#DC2626] font-semibold border border-[#DC2626]/20">
+                Psikologis: Panik &amp; Tekanan Waktu
+              </span>
+<span class="material-symbols-outlined text-[#DC2626]">alarm</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-[#152238]">Urgensi Palsu &amp; Kepanikan</h3>
+<div class="p-3 bg-[#F8FAFD] rounded-lg border border-[#DCE4ED] text-body-sm text-[#152238]">
+<strong class="text-[#DC2626] font-medium block mb-1">Contoh Nyata:</strong>
+              "Pemberitahuan darurat: Rekening bank Anda terindikasi transaksi mencurigakan dan akan diblokir dalam 15 menit jika tidak mengonfirmasi PIN/OTP segera via link ini."
+            </div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#DCE4ED] text-body-sm">
+<span class="font-semibold text-[#059669] flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+              Cara Menangkal:
+            </span>
+<p class="text-[#5D6B80]">Tarik napas. Pihak bank resmi tidak pernah memberi tenggat waktu panik untuk meminta data pribadi maupun PIN melalui pesan instan.</p>
+</div>
+</div>
+<!-- Card 2: Penyamaran Otoritas Resmi -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 border-l-4 border-l-[#D97706] flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm bg-[#FFFBEB] text-[#D97706] font-semibold border border-[#D97706]/20">
+                Psikologis: Kepatuhan pada Hirarki
+              </span>
+<span class="material-symbols-outlined text-[#D97706]">account_balance</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-[#152238]">Penyamaran Otoritas Resmi</h3>
+<div class="p-3 bg-[#F8FAFD] rounded-lg border border-[#DCE4ED] text-body-sm text-[#152238]">
+<strong class="text-[#D97706] font-medium block mb-1">Contoh Nyata:</strong>
+              "Pelaku memasang logo resmi Ditjen Pajak (DJP), kurir ekspedisi logistik, atau kepolisian lalu lintas (Surat Tilang ETLE) dalam format pesan digital."
+            </div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#DCE4ED] text-body-sm">
+<span class="font-semibold text-[#059669] flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+              Cara Menangkal:
+            </span>
+<p class="text-[#5D6B80]">Tutup pesan seketika. Hubungi kanal pengaduan resmi institusi bersangkutan secara mandiri tanpa mengikuti nomor kontak yang tercantum di pesan.</p>
+</div>
+</div>
+<!-- Card 3: Iming-iming Hadiah -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 border-l-4 border-l-[#176B68] flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm bg-[#E2F3F0] text-[#176B68] font-semibold border border-[#176B68]/20">
+                Psikologis: Keserakahan &amp; Euforia
+              </span>
+<span class="material-symbols-outlined text-[#176B68]">redeem</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-[#152238]">Iming-iming Hadiah &amp; Undian</h3>
+<div class="p-3 bg-[#F8FAFD] rounded-lg border border-[#DCE4ED] text-body-sm text-[#152238]">
+<strong class="text-[#176B68] font-medium block mb-1">Contoh Nyata:</strong>
+              "Selamat! Nomor telepon Anda terpilih secara acak memenangkan dana tunai Rp 50 juta dari program apresiasi e-commerce tanpa perlu proses pendaftaran."
+            </div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#DCE4ED] text-body-sm">
+<span class="font-semibold text-[#059669] flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+              Cara Menangkal:
+            </span>
+<p class="text-[#5D6B80]">Ingat prinsip dasar: Hadiah undian resmi tidak pernah memungut biaya administrasi uang muka atau meminta token perbankan korban.</p>
+</div>
+</div>
+<!-- Card 4: Modus File APK -->
+<div class="bg-surface-container-lowest custom-editorial-border rounded-xl p-6 border-l-4 border-l-[#DC2626] flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full text-label-sm bg-[#FEF2F2] text-[#DC2626] font-semibold border border-[#DC2626]/20">
+                Teknis: Malware Sniffer Berbahaya
+              </span>
+<span class="material-symbols-outlined text-[#DC2626]">android</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-[#152238]">Modus File Manipulatif (.APK)</h3>
+<div class="p-3 bg-[#F8FAFD] rounded-lg border border-[#DCE4ED] text-body-sm text-[#152238]">
+<strong class="text-[#DC2626] font-medium block mb-1">Contoh Nyata:</strong>
+              "Berkas lampiran dikirim dengan nama tipuan seperti 'Surat_Undangan_Pernikahan.apk' atau 'Foto_Paket_Kurir.apk' untuk meretas akses SMS dan meneruskan OTP."
+            </div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#DCE4ED] text-body-sm">
+<span class="font-semibold text-[#059669] flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+              Cara Menangkal:
+            </span>
+<p class="text-[#5D6B80]">Jangan pernah menyetujui izin instalasi aplikasi dari luar Google Play Store atau App Store. Berkas dokumen resmi berupa PDF tidak berformat .apk.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Quick Tool / Live Scam Checker Preview Teaser -->
+<section class="bg-surface-container-lowest custom-editorial-border rounded-xl p-8 hero-split-shadow space-y-6" id="analisis">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#DCE4ED]">
+<div>
+<span class="text-label-sm font-label-sm text-[#176B68] font-bold uppercase tracking-wider block mb-1">
+            HEURISTIK SCANNER MANDIRI
+          </span>
+<h2 class="text-headline-lg font-headline-lg text-[#152238]">
+            Uji Coba Analisis Teks Pesan Mencurigakan
+          </h2>
+<p class="text-body-md font-body-md text-[#5D6B80]">
+            Tempel pesan teks SMS/WhatsApp yang Anda terima untuk mendeteksi indikasi bahaya rekayasa sosial secara instan di peramban Anda.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#059669] text-[20px]">enhanced_encryption</span>
+<span class="text-label-sm font-label-sm text-[#5D6B80]">Pemrosesan Sisi-Klien (Data Tidak Disimpan)</span>
+</div>
+</div>
+<!-- Quick Preset Selection -->
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-[#152238] font-semibold">Pilih Skenario Kasus Uji Siap Pakai:</label>
+<div class="flex flex-wrap gap-2.5">
+<button class="px-3.5 py-1.5 text-label-sm font-label-sm rounded-lg bg-surface-container-low hover:bg-[#E2F3F0] text-[#152238] hover:text-[#176B68] border border-[#DCE4ED] transition" onclick="loadSample(1)" type="button">
+            Contoh 1: Surat Tilang ETLE Palsu (.APK)
+          </button>
+<button class="px-3.5 py-1.5 text-label-sm font-label-sm rounded-lg bg-surface-container-low hover:bg-[#E2F3F0] text-[#152238] hover:text-[#176B68] border border-[#DCE4ED] transition" onclick="loadSample(2)" type="button">
+            Contoh 2: Undian Marketplace 50 Juta
+          </button>
+<button class="px-3.5 py-1.5 text-label-sm font-label-sm rounded-lg bg-surface-container-low hover:bg-[#E2F3F0] text-[#152238] hover:text-[#176B68] border border-[#DCE4ED] transition" onclick="loadSample(3)" type="button">
+            Contoh 3: Pemblokiran Rekening Mendesak
+          </button>
+</div>
+</div>
+<!-- Interactive Input Area -->
+<div class="space-y-3">
+<div class="relative">
+<textarea class="w-full rounded-lg border border-[#DCE4ED] p-4 text-body-md text-[#152238] focus:border-[#176B68] focus:ring-2 focus:ring-[#176B68]/15 outline-none resize-none transition" id="message-input" placeholder="Salin dan tempel kalimat pesan mencurigakan di sini untuk diuji..." rows="4"></textarea>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-label-sm text-[#5D6B80]">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Mendeteksi pola: Phishing URL, Nama File Ekstensi, Kata Kunci Tekanan Panik</span>
+</div>
+<button class="inline-flex items-center gap-2 bg-[#176B68] hover:bg-[#105653] text-white px-5 py-2.5 rounded-lg text-label-lg font-label-lg transition shadow-sm active:translate-y-px" onclick="analyzeText()" type="button">
+<span class="material-symbols-outlined text-[18px]">manage_search</span>
+<span>Jalankan Analisis Sekarang</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Result Container (Simulated Micro-interaction) -->
+<div class="hidden rounded-lg border border-[#DCE4ED] bg-[#F8FAFD] p-5 space-y-4" id="result-box">
+<div class="flex items-center justify-between border-b border-[#DCE4ED] pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#DC2626]" id="result-badge-icon">report</span>
+<span class="font-headline-sm text-headline-sm text-[#152238]" id="result-title">Hasil Evaluasi Heuristik</span>
+</div>
+<span class="px-3 py-0.5 rounded-full text-label-sm font-semibold bg-[#FEF2F2] text-[#DC2626] border border-[#DC2626]/20" id="result-status">
+            Skor Bahaya: 88%
+          </span>
+</div>
+<p class="text-body-md text-[#5D6B80] leading-relaxed" id="result-desc">
+          Teks mengandung beberapa indikator manipulasi rekayasa sosial tingkat tinggi. Jangan unduh berkas atau mengklik tautan apapun.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1" id="result-findings">
+<!-- Dynamically populated or default populated -->
+</div>
+</div>
+</section>
+<!-- Interactive Simulation Banner / Quiz Section -->
+<section class="bg-gradient-to-r from-[#152238] to-[#1c2c47] rounded-xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8" id="kuis">
+<div class="space-y-3 max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#176B68]/30 border border-[#89d3cf]/30 text-primary-fixed text-label-sm">
+<span class="material-symbols-outlined text-[16px]">school</span>
+<span>Modul Evaluasi Mandiri Mahasiswa</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg text-white">
+          Uji Ketajaman Nalar: Kuis Simulasi 10 Kasus Nyata
+        </h3>
+<p class="text-body-md text-[#ccdbf3] leading-relaxed">
+          Bisakah Anda membedakan pesan tagihan resmi dengan rekayasa sosial dalam kurun waktu 15 detik? Uji kesiapan refleks Anda melalui modul kuis interaktif tanpa risiko.
+        </p>
+</div>
+<div class="shrink-0">
+<a class="inline-flex items-center gap-2.5 bg-[#89d3cf] hover:bg-[#a5f0eb] text-[#00504d] px-6 py-3.5 rounded-lg text-label-lg font-label-lg font-bold transition shadow-sm active:translate-y-px" href="#kuis">
+<span class="material-symbols-outlined text-[20px]">quiz</span>
+<span>Mulai Kuis 5 Menit</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Institutional Footer (Shared Component Anchor) -->
+<footer class="w-full border-t border-outline-variant py-space-xl px-margin bg-surface-container mt-20">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-outline-variant/60">
+<!-- Brand & Mission Column -->
+<div class="md:col-span-5 space-y-3">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-bold text-primary">CyberGuard.AI</span>
+</div>
+<p class="text-body-sm text-on-surface-variant max-w-sm leading-relaxed">
+          Think Before You Click. — Inisiatif Edukasi Keamanan Digital &amp; Rekayasa Sosial Nasional untuk sivitas akademika, institusi publik, dan masyarakat umum Indonesia.
+        </p>
+<div class="pt-2 flex items-center gap-3 text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+            Riset Berbasis Terbuka
+          </span>
+<span class="text-outline-variant">•</span>
+<span>Non-Komersial</span>
+</div>
+</div>
+<!-- Links Column (Exact strings from JSON) -->
+<div class="md:col-span-4 space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-[#152238] text-[16px]">Dokumentasi &amp; Kerangka</h4>
+<ul class="space-y-2">
+<li>
+<a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors duration-150" href="#">
+              Kerangka Verifikasi Digital
+            </a>
+</li>
+<li>
+<a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors duration-150" href="#">
+              Kebijakan Privasi &amp; Data
+            </a>
+</li>
+<li>
+<a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors duration-150" href="#">
+              Metodologi Analisis
+            </a>
+</li>
+<li>
+<a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors duration-150" href="#">
+              Kontak Riset Sivitas
+            </a>
+</li>
+</ul>
+</div>
+<!-- Institutional Disclaimer -->
+<div class="md:col-span-3 space-y-2 bg-surface-container-lowest p-4 rounded-lg custom-editorial-border">
+<span class="text-label-sm font-label-sm font-bold text-[#152238] uppercase tracking-wider block">Catatan Integritas</span>
+<p class="text-body-sm text-[#5D6B80] leading-relaxed text-[12px]">
+          Platform edukasi nirlaba. Seluruh simulasi ditujukan untuk pelatihan kesadaran keamanan digital publik dan tidak menggantikan konsultasi hukum atau investigasi forensik profesional.
+        </p>
+</div>
+</div>
+<!-- Bottom Copyright Row -->
+<div class="max-w-[1280px] mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-body-sm text-on-surface-variant gap-4">
+<p>© 2025 CyberGuard.AI — Inisiatif Edukasi Keamanan Digital &amp; Rekayasa Sosial Nasional.</p>
+<div class="flex items-center gap-4 text-[13px]">
+<span>Standar Keamanan Siber Indonesia</span>
+<span class="text-outline-variant">•</span>
+<span>Versi Edukasi 2.4-id</span>
+</div>
+</div>
+</footer>
+<!-- Simple Vanilla Micro-interactions -->
+<script>
+    const sampleCases = {
+      1: "Pemberitahuan Kepolisian Lalu Lintas: Surat Konfirmasi Tilang ETLE Nomor 49201-B. Kendaraan Anda terekam melanggar batas kecepatan. Silakan buka aplikasi Surat_Tilang_ETLE.apk untuk melihat foto bukti dan menghindari blokir STNK.",
+      2: "Selamat! Nomor Anda resmi meraih kupon undian Festival Belanja Nasional senilai Rp 50.000.000 tanpa diundi. Klaim hadiah segera dalam 2 jam melalui konfirmasi transfer administrasi Rp 150.000 ke rekening bendahara.",
+      3: "PERINGATAN DARURAT: Rekening Anda terdeteksi diakses dari perangkat tak dikenal. Transaksi Anda akan dibekukan permanen. Segera lakukan pembatalan dengan mengetik format PIN dan OTP SMS ke nomor petugas ini."
+    };
+
+    function loadSample(id) {
+      const textarea = document.getElementById('message-input');
+      textarea.value = sampleCases[id];
+      analyzeText();
+    }
+
+    function analyzeText() {
+      const input = document.getElementById('message-input').value.trim();
+      const resultBox = document.getElementById('result-box');
+      const findings = document.getElementById('result-findings');
+      
+      if (!input) {
+        alert("Silakan masukkan teks pesan yang ingin diuji.");
+        return;
+      }
+
+      resultBox.classList.remove('hidden');
+
+      const isApk = input.toLowerCase().includes('.apk');
+      const isUrgent = input.toLowerCase().includes('segera') || input.toLowerCase().includes('dibekukan') || input.toLowerCase().includes('2 jam') || input.toLowerCase().includes('darurat');
+      const isMoney = input.toLowerCase().includes('rp') || input.toLowerCase().includes('undian') || input.toLowerCase().includes('hadiah');
+
+      let cardsHtml = '';
+
+      if (isApk) {
+        cardsHtml += `
+          <div class="p-3 bg-white border border-[#DCE4ED] rounded text-body-sm">
+            <span class="font-bold text-[#DC2626] block">⚠️ Ekstensi Berbahaya .APK Terdeteksi</span>
+            <span class="text-[#5D6B80] text-[12px]">Pesan melampirkan file eksekusi Android berpotensi RAT/Trojan pembajak SMS OTP.</span>
+          </div>`;
+      }
+      if (isUrgent) {
+        cardsHtml += `
+          <div class="p-3 bg-white border border-[#DCE4ED] rounded text-body-sm">
+            <span class="font-bold text-[#D97706] block">⏳ Taktik Urgensi & Kepanikan</span>
+            <span class="text-[#5D6B80] text-[12px]">Pelaku memanfaatkan batasan waktu palsu untuk menekan pengambilan keputusan rasional.</span>
+          </div>`;
+      }
+      if (isMoney) {
+        cardsHtml += `
+          <div class="p-3 bg-white border border-[#DCE4ED] rounded text-body-sm">
+            <span class="font-bold text-[#176B68] block">🎁 Umpan Iming-iming Finansial</span>
+            <span class="text-[#5D6B80] text-[12px]">Penawaran uang tunai yang tidak masuk akal sering digunakan untuk menjerat biaya administrasi bodong.</span>
+          </div>`;
+      }
+
+      if (!cardsHtml) {
+        cardsHtml = `
+          <div class="p-3 bg-white border border-[#DCE4ED] rounded text-body-sm md:col-span-2">
+            <span class="font-bold text-[#059669] block">✓ Tidak Ada Kata Kunci Berbahaya Utama</span>
+            <span class="text-[#5D6B80] text-[12px]">Tetap berhati-hati dan pastikan tidak menyerahkan kredensial pribadi atau kata sandi kepada siapapun.</span>
+          </div>`;
+      }
+
+      findings.innerHTML = cardsHtml;
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body></html>

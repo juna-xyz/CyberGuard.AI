@@ -1,0 +1,66 @@
+{
+  "projectSlug": "cyberguard-ai",
+  "stitchProjectId": "16810620299229705722",
+  "projectResource": "projects/16810620299229705722",
+  "projectTitle": "CyberGuard AI",
+  "designSystemId": "assets/9113cf4209b84273accb3c2643a7c3b1",
+  "designSystemName": "Academic Security Light",
+  "deviceType": "DESKTOP",
+  "generatedAt": "2026-10-22T01:28:00+07:00",
+  "screens": [
+    {
+      "frId": "FR-01",
+      "screenSlug": "screen-01-dashboard",
+      "stitchScreenId": "950a930b5ac94bf68cd5d2d2a382d3e3",
+      "stitchResource": "projects/16810620299229705722/screens/950a930b5ac94bf68cd5d2d2a382d3e3",
+      "title": "CyberGuard AI - Digital Security Learning Dashboard",
+      "route": "/",
+      "htmlCode": {
+        "name": "projects/16810620299229705722/files/2f89edcafa6f4908a782c1407456fe6a",
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzBlMzljMjdhZTk3MjQ1ZWE5ZmMxZTZiYjk5YWJlNzk1EgsSBxCx5o697xgYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjgxMDYyMDI5OTIyOTcwNTcyMg&filename=&opi=96797242"
+      },
+      "screenshot": {
+        "name": "projects/16810620299229705722/files/b254618f57e64dd79ab0ebcad5df984b",
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1Vf6oaUQawpfua4NDDjrETlc2otlUtN1IEzl-sjfJlMh-6-UoJYw4ZwLdRyW45g5G8u5mjfZbViAcXhruYFCf8teAPeSrnoEJOmpElNSpKNA2VBtXzk3TXoW9v2GD6KAZhe6OySfhB12ayXDmp7XYdVTWWCTJV6ieweXn3KPq9E52aVCMvgCkH7-GGy17bnOSUbKTdYulOA8yZ2lxCLmNPoOF6goHYSM0t7g4smBLyNi4XSG-7t7PegL1-T"
+      },
+      "localSourceHtml": ".agents/memory/screens/cyberguard-ai/screen-01-dashboard/source.html",
+      "localDesignMd": ".agents/memory/screens/cyberguard-ai/screen-01-dashboard/design.md"
+    },
+    {
+      "frId": "FR-02",
+      "screenSlug": "screen-02-analyzer",
+      "stitchScreenId": "c17a3c690e334a7082ee2e2f23e67f71",
+      "stitchResource": "projects/16810620299229705722/screens/c17a3c690e334a7082ee2e2f23e67f71",
+      "title": "CyberGuard AI - Forensic Message Inspector",
+      "route": "/analyzer",
+      "htmlCode": {
+        "name": "projects/16810620299229705722/files/90397e27bfaf4ca8904e711812d4005f",
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzQ3ODE4YzBkMDJjYjQ4ZmVhYzc5MWZhOTgzMzcyYWJhEgsSBxCx5o697xgYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjgxMDYyMDI5OTIyOTcwNTcyMg&filename=&opi=96797242"
+      },
+      "screenshot": {
+        "name": "projects/16810620299229705722/files/0fdd129eb20b4eb194f6b9d3d4a04d7c",
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1VHgrpWPmXUWzSoWqMO2Cd6-dsS790tWbzvSFrhwmSs8brVTVUIusUEHzIUAqwOxHaKSNDuWgYgolD2klcMKywKXC-5CglN8_KrXS-Pc0jTO03Bkq9WyQdQuDnSLh4xHFsYQWQr4eo88f52WKH6gnYTUVjo-0o4PF5oTbvBR_prJKW2fxZtLT2pXOPZw1KLWRUMrROmuUoGmZlEuDUL9dKh4WOH-D1D__q5Jvbom9pTWlzIpJTTzIotfCYc"
+      },
+      "localSourceHtml": ".agents/memory/screens/cyberguard-ai/screen-02-analyzer/source.html",
+      "localDesignMd": ".agents/memory/screens/cyberguard-ai/screen-02-analyzer/design.md"
+    },
+    {
+      "frId": "FR-03",
+      "screenSlug": "screen-03-quiz",
+      "stitchScreenId": "4f6b071d261144e6802a5e97c3e4090e",
+      "stitchResource": "projects/16810620299229705722/screens/4f6b071d261144e6802a5e97c3e4090e",
+      "title": "CyberGuard AI - Interactive Cyber Decision Quiz",
+      "route": "/quiz",
+      "htmlCode": {
+        "name": "projects/16810620299229705722/files/41f875782b6344648622412d711b9237",
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzRmNTg1OTljOGU5MzQ5Yzc4NzI5NTE5MWUxOGE3M2E0EgsSBxCx5o697xgYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjgxMDYyMDI5OTIyOTcwNTcyMg&filename=&opi=96797242"
+      },
+      "screenshot": {
+        "name": "projects/16810620299229705722/files/39ce1b3db4264532a9a4094bfca96770",
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1VXQt-BvwLAvRh_k-IXRPNONQ62IHrG43xxVefFmca0od-UA4UvQrnzo_Fv23cBYB__lJmebzv9bhgDH6mrbFCkhI3kRcTIZMZvzK1HM_ZH0qSlDqKOvRDIsf7qm7bDphAkstmG4Xo586GIJpZsPm5h57tpUUteXOJ10Fd3SYtlya3DrrHkTTsKBJfOFrxr1MgLiZjA06X7TTjCOHwYauOUKnO8ZIw19oUSfapTdVUiG7xH_P_lRKhVdZuP"
+      },
+      "localSourceHtml": ".agents/memory/screens/cyberguard-ai/screen-03-quiz/source.html",
+      "localDesignMd": ".agents/memory/screens/cyberguard-ai/screen-03-quiz/design.md"
+    }
+  ]
+}

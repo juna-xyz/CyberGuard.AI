@@ -6,7 +6,9 @@ import { DashboardScreen } from './components/features/dashboard/DashboardScreen
 import { AnalyzerScreen } from './components/features/analyzer/AnalyzerScreen';
 import { QuizScreen } from './components/features/quiz/QuizScreen';
 
-export const App: React.FC = () => {
+import { SettingsProvider } from './context/SettingsContext';
+
+export const AppContent: React.FC = () => {
   // Parsing rute awal dari pathname atau hash
   const getInitialTab = (): ActiveTab => {
     const path = window.location.pathname;
@@ -35,7 +37,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-canvas text-ink">
+    <div className="min-h-screen flex flex-col bg-canvas text-ink transition-colors duration-150">
       <Header activeTab={activeTab} onNavigate={handleNavigate} />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -46,6 +48,14 @@ export const App: React.FC = () => {
 
       <Footer onNavigate={handleNavigate} />
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <SettingsProvider>
+      <AppContent />
+    </SettingsProvider>
   );
 };
 export default App;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { RiskLevel } from '../../types';
 import { ShieldAlert, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { useSettings } from '../../context/SettingsContext';
 
 export interface BadgeProps {
   variant?: 'brand' | 'neutral' | 'high' | 'medium' | 'low';
@@ -15,6 +16,8 @@ export const Badge: React.FC<BadgeProps> = ({
   className = '',
   children
 }) => {
+  const { language } = useSettings();
+
   // Jika diberikan riskLevel, otomatis petakan varian
   const activeVariant = riskLevel
     ? (riskLevel === 'HIGH' ? 'high' : riskLevel === 'MEDIUM' ? 'medium' : 'low')
@@ -35,10 +38,16 @@ export const Badge: React.FC<BadgeProps> = ({
     return null;
   };
 
+  const defaultLabel = riskLevel === 'HIGH'
+    ? (language === 'en' ? 'HIGH RISK' : 'RISIKO TINGGI')
+    : riskLevel === 'MEDIUM'
+      ? (language === 'en' ? 'MEDIUM RISK' : 'RISIKO SEDANG')
+      : (language === 'en' ? 'LOW RISK' : 'RISIKO RENDAH');
+
   return (
     <span className={`inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-badge border ${variantStyles} ${className}`}>
       {renderIcon()}
-      {children || (riskLevel === 'HIGH' ? 'RISIKO TINGGI' : riskLevel === 'MEDIUM' ? 'RISIKO SEDANG' : 'RISIKO RENDAH')}
+      {children || defaultLabel}
     </span>
   );
 };

@@ -5,12 +5,12 @@
       <stop offset="0%" stop-color="#FFFFFF" />
       <stop offset="100%" stop-color="#F7F9FC" />
     </linearGradient>
-    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#176B68" />
-      <stop offset="100%" stop-color="#105653" />
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1E40AF" />
     </linearGradient>
     <linearGradient id="glowRing" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E2F3F0" stop-opacity="0.8" />
+      <stop offset="0%" stop-color="#DBEAFE" stop-opacity="0.8" />
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.2" />
     </linearGradient>
     <filter id="subtleDrop" x="-10%" y="-10%" width="120%" height="120%">
@@ -20,37 +20,37 @@
 
   <!-- Ambient Concentric Circular Grid -->
   <circle cx="200" cy="200" r="180" stroke="#DCE4ED" stroke-width="1" stroke-dasharray="4 6" opacity="0.6" />
-  <circle cx="200" cy="200" r="145" stroke="#E2F3F0" stroke-width="1.5" />
+  <circle cx="200" cy="200" r="145" stroke="#DBEAFE" stroke-width="1.5" />
   <circle cx="200" cy="200" r="110" stroke="#DCE4ED" stroke-width="1" opacity="0.4" />
 
   <!-- Outer Protective Hex-Shield Shield Body -->
-  <path d="M200 48 L316 92 V198 C316 270 264 330 200 352 C136 330 84 270 84 198 V92 L200 48 Z" 
-        fill="url(#shieldBg)" 
-        stroke="#DCE4ED" 
-        stroke-width="2" 
+  <path d="M200 48 L316 92 V198 C316 270 264 330 200 352 C136 330 84 270 84 198 V92 L200 48 Z"
+        fill="url(#shieldBg)"
+        stroke="#DCE4ED"
+        stroke-width="2"
         filter="url(#subtleDrop)" />
 
   <!-- Inner Concentric Hairline Shield Accent -->
-  <path d="M200 68 L296 106 V196 C296 254 254 306 200 326 C146 306 104 254 104 196 V106 L200 68 Z" 
-        fill="none" 
-        stroke="#176B68" 
-        stroke-width="1.5" 
-        stroke-opacity="0.25" 
+  <path d="M200 68 L296 106 V196 C296 254 254 306 200 326 C146 306 104 254 104 196 V106 L200 68 Z"
+        fill="none"
+        stroke="#2563EB"
+        stroke-width="1.5"
+        stroke-opacity="0.25"
         stroke-dasharray="6 4" />
 
   <!-- Central Digital Safe Vault & Verification Core -->
   <g transform="translate(140, 130)">
     <!-- Circuit Crosshairs -->
-    <path d="M60 0 V30 M60 90 V120 M0 60 H30 M90 60 H120" stroke="#176B68" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
-    
+    <path d="M60 0 V30 M60 90 V120 M0 60 H30 M90 60 H120" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+
     <!-- Shield Core Hexagon -->
-    <polygon points="60,18 102,42 102,90 60,114 18,90 18,42" fill="#E2F3F0" stroke="#176B68" stroke-width="2" />
-    
+    <polygon points="60,18 102,42 102,90 60,114 18,90 18,42" fill="#DBEAFE" stroke="#2563EB" stroke-width="2" />
+
     <!-- Digital Padlock Body -->
-    <rect x="42" y="56" width="36" height="30" rx="6" fill="#176B68" />
+    <rect x="42" y="56" width="36" height="30" rx="6" fill="#2563EB" />
     <!-- Padlock Shackle (Secured/Closed) -->
-    <path d="M48 56 V45 C48 38.37 53.37 33 60 33 C66.63 33 72 38.37 72 45 V56" fill="none" stroke="#176B68" stroke-width="4" stroke-linecap="round" />
-    
+    <path d="M48 56 V45 C48 38.37 53.37 33 60 33 C66.63 33 72 38.37 72 45 V56" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round" />
+
     <!-- Central Keyhole & Indicator Node -->
     <circle cx="60" cy="69" r="3" fill="#FFFFFF" />
     <path d="M60 72 V78" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
@@ -58,11 +58,11 @@
 
   <!-- Verified Trust Check Node Indicator -->
   <g transform="translate(284, 184)" filter="url(#subtleDrop)">
-    <circle cx="16" cy="16" r="16" fill="#176B68" />
+    <circle cx="16" cy="16" r="16" fill="#2563EB" />
     <path d="M10 16.5 L14 20.5 L22 12.5" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
   </g>
 
   <!-- Telemetry Data Nodes -->
-  <circle cx="116" cy="180" r="4" fill="#176B68" opacity="0.7" />
-  <line x1="116" y1="180" x2="140" y2="180" stroke="#176B68" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+  <circle cx="116" cy="180" r="4" fill="#2563EB" opacity="0.7" />
+  <line x1="116" y1="180" x2="140" y2="180" stroke="#2563EB" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
 </svg>

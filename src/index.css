@@ -15,11 +15,13 @@
   --color-ink-muted: #5D6B80;
   --color-ink-subtle: #8996A9;
 
-  /* 10% Primary Brand Accent (Restrained Teal) */
-  --color-brand: #176B68;
-  --color-brand-hover: #105653;
-  --color-brand-soft: #E2F3F0;
-  --color-brand-border: #A3D5CD;
+  /* 10% Primary Brand Accent (Cyber Blue Team) */
+  --color-brand: #2563EB;
+  --color-brand-hover: #1E40AF;
+  --color-brand-soft: #DBEAFE;
+  --color-brand-border: #BFDBFE;
+  --color-brand-deep: #1E40AF;
+  --color-brand-highlight: #60A5FA;
 
   /* Semantic Qualitative Risk Colors */
   --color-risk-high: #B93838;
@@ -46,6 +48,46 @@
   --shadow-popover: 0 12px 24px rgba(21, 34, 56, 0.08), 0 4px 8px rgba(21, 34, 56, 0.04);
 }
 
+.dark {
+  /* 60% Canvas & Background Surfaces — Brighter Midnight Cyber Blue */
+  --color-canvas: #172B46;
+  --color-surface: #223B5B;
+  --color-surface-muted: #2A466C;
+
+  /* 30% Structural Hairlines & Typography Ink */
+  --color-hairline: #335583;
+  --color-hairline-strong: #456E9F;
+  --color-ink: #F1F5F9;
+  --color-ink-muted: #CBD5E1;
+  --color-ink-subtle: #94A3B8;
+
+  /* 10% Primary Brand Accent (Cyber Blue Team) */
+  --color-brand: #3B82F6;
+  --color-brand-hover: #60A5FA;
+  --color-brand-soft: rgba(59, 130, 246, 0.20);
+  --color-brand-border: #3B82F6;
+  --color-brand-deep: #2563EB;
+  --color-brand-highlight: #93C5FD;
+
+  /* Semantic Qualitative Risk Colors in Dark */
+  --color-risk-high: #F87171;
+  --color-risk-high-soft: rgba(239, 68, 68, 0.18);
+  --color-risk-high-border: rgba(239, 68, 68, 0.35);
+
+  --color-risk-medium: #FBBF24;
+  --color-risk-medium-soft: rgba(245, 158, 11, 0.18);
+  --color-risk-medium-border: rgba(245, 158, 11, 0.35);
+
+  --color-risk-low: #34D399;
+  --color-risk-low-soft: rgba(16, 185, 129, 0.18);
+  --color-risk-low-border: rgba(16, 185, 129, 0.35);
+
+  /* Elevation Shadows */
+  --shadow-subtle: 0 1px 3px rgba(10, 20, 35, 0.35);
+  --shadow-card: 0 4px 14px rgba(10, 20, 35, 0.3);
+  --shadow-popover: 0 12px 28px rgba(10, 20, 35, 0.55);
+}
+
 @layer base {
   body {
     background-color: var(--color-canvas);
@@ -56,7 +98,7 @@
 
 /* Accessible focus visible utility */
 .focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
 }
 
 /* Reduced motion support */

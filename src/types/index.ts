@@ -18,11 +18,29 @@ export interface ObservableIndicator {
   educationalAdvice: string;
 }
 
+export type SocialEngineeringTacticType =
+  | 'URGENCY'
+  | 'AUTHORITY_IMPERSONATION'
+  | 'FEAR'
+  | 'REWARD_BAIT'
+  | 'SECRECY';
+
+export interface DetectedTactic {
+  type: SocialEngineeringTacticType;
+  titleId: string;
+  titleEn: string;
+  matchedSnippet?: string;
+  explanationId: string;
+  explanationEn: string;
+  severity: 'WARNING' | 'CRITICAL';
+}
+
 export interface AnalysisReport {
   riskLevel: RiskLevel;
   summaryHeading: string;
   explanation: string;
   detectedIndicators: ObservableIndicator[];
+  detectedTactics?: DetectedTactic[];
   safeNextSteps: string[];
   detectionBoundaryNote: string;
   analyzedAt: string;
@@ -44,6 +62,12 @@ export interface QuizOption {
   feedbackExplanation: string;
 }
 
+export interface QuizTrapAnalysis {
+  tacticName: string;
+  manipulationMechanism: string;
+  safetyLesson: string;
+}
+
 export interface QuizQuestion {
   id: number;
   scenarioContext: string;
@@ -53,6 +77,7 @@ export interface QuizQuestion {
   questionPrompt: string;
   options: QuizOption[];
   learningTakeaway: string;
+  trapAnalysis?: QuizTrapAnalysis;
 }
 
 export interface QuizUserAnswer {

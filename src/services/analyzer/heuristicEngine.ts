@@ -146,14 +146,110 @@ export function analyzeMessageLocally(rawText: string): AnalysisReport {
     safeNextSteps.push('Jangan sembarangan memasukkan informasi akun di halaman yang tidak Anda kenal.');
   }
 
+  // Deteksi taktik rekayasa sosial lokal tanpa mengubah penilaian risiko
+  const detectedTactics = detectSocialEngineeringTactics(text);
+
   return {
     riskLevel,
     summaryHeading,
     explanation,
     detectedIndicators,
+    detectedTactics,
     safeNextSteps,
     detectionBoundaryNote: 'Hasil analisis ini merupakan estimasi edukatif berdasarkan sinyal-sinyal umum rekayasa sosial, bukan jaminan verifikasi mutlak atau sertifikasi keamanan perbankan.',
     analyzedAt: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB',
     engineSource: 'LOCAL_HEURISTIC'
   };
+}
+
+/**
+ * Mendeteksi 5 taktik rekayasa sosial psikologis utama:
+ * 1. Urgency (Urgensi Waktu)
+ * 2. Authority Impersonation (Peniruan Otoritas)
+ * 3. Fear / Panic (Intimidasi & Ketakutan)
+ * 4. Reward Bait (Umpan Hadiah)
+ * 5. Secrecy / Isolation (Isolasi & Kerahasiaan)
+ *
+ * Catatan: Deteksi ini berbasis aturan leksikal lokal murni tanpa mengubah logika skor risiko.
+ */
+export function detectSocialEngineeringTactics(rawText: string): import('../../types').DetectedTactic[] {
+  const text = rawText.trim();
+  const tactics: import('../../types').DetectedTactic[] = [];
+
+  // 1. Taktik: Urgensi Waktu (Artificial Urgency)
+  const tacticUrgencyRegex = /(segera|dalam 24 jam|1x24 jam|24 jam|15 menit|hari ini juga|sebelum diblokir|batas waktu|sebelum terlambat|sekarang juga|menit lagi|urgent|immediately|within 24 hours|15 minutes|today only|time limit|expires soon|act now|hurry|asap)/i;
+  const urgencyMatch = text.match(tacticUrgencyRegex);
+  if (urgencyMatch) {
+    tactics.push({
+      type: 'URGENCY',
+      titleId: 'Urgensi Waktu',
+      titleEn: 'Artificial Urgency',
+      matchedSnippet: urgencyMatch[0],
+      explanationId: 'Menciptakan kepanikan batas waktu semu agar korban bertindak tergesa-gesa tanpa sempat memverifikasi kebenaran informasi.',
+      explanationEn: 'Creates artificial time pressure to rush the victim into impulsive action without pausing to verify facts.',
+      severity: 'WARNING',
+    });
+  }
+
+  // 2. Taktik: Peniruan Otoritas (Authority Impersonation)
+  const tacticAuthorityRegex = /(pihak bank|kurir j&t|j&t express|jne|pos indonesia|kemenkeu|bca|bri|mandiri|bni|bpjs|polisi|surat tilang|petugas resmi|admin resmi|layanan nasabah|customer service|official alert|support team|it desk|security department|tax office|official verification)/i;
+  const authorityMatch = text.match(tacticAuthorityRegex);
+  if (authorityMatch) {
+    tactics.push({
+      type: 'AUTHORITY_IMPERSONATION',
+      titleId: 'Peniruan Otoritas',
+      titleEn: 'Authority Impersonation',
+      matchedSnippet: authorityMatch[0],
+      explanationId: 'Mencatut nama institusi perbankan, kurir logistik, atau instansi terpercaya untuk menuntut kepatuhan korban secara semu.',
+      explanationEn: 'Impersonates banks, courier logistics, or trusted institutions to demand false compliance and credibility.',
+      severity: 'CRITICAL',
+    });
+  }
+
+  // 3. Taktik: Intimidasi & Ketakutan (Fear & Panic Pressure)
+  const tacticFearRegex = /(diblokir|dinonaktifkan|terkunci permanen|ancaman|sanksi|denda|penjara|hukum pidana|disita|peringatan keras|pelanggaran hukum|transaksi mencurigakan|blocked|deactivated|frozen|permanently suspended|legal action|penalty|arrest|violation|unrecognized device|suspicious activity|unauthorized access)/i;
+  const fearMatch = text.match(tacticFearRegex);
+  if (fearMatch) {
+    tactics.push({
+      type: 'FEAR',
+      titleId: 'Intimidasi & Ketakutan',
+      titleEn: 'Fear & Panic Pressure',
+      matchedSnippet: fearMatch[0],
+      explanationId: 'Menakut-nakuti korban dengan ancaman pemblokiran rekening, sanksi finansial, atau konsekuensi hukum untuk melumpuhkan akal sehat.',
+      explanationEn: 'Threatens the victim with account suspension, financial loss, or legal trouble to paralyze critical thinking.',
+      severity: 'CRITICAL',
+    });
+  }
+
+  // 4. Taktik: Umpan Hadiah (Reward Bait)
+  const tacticRewardRegex = /(selamat anda menang|hadiah rp|saldo tunai|klaim hadiah|tanpa diundi|pemenang undian|dana subsidi|bansos|bonus saldo|voucher gratis|gebyar undian|congratulations|you won|cash prize|claim your prize|lottery winner|free bonus|giveaway|exclusive reward|customer appreciation)/i;
+  const rewardMatch = text.match(tacticRewardRegex);
+  if (rewardMatch) {
+    tactics.push({
+      type: 'REWARD_BAIT',
+      titleId: 'Umpan Hadiah & Saldo Semu',
+      titleEn: 'Reward Bait',
+      matchedSnippet: rewardMatch[0],
+      explanationId: 'Memancing emosi senang dan euforia melalui janji dana tunai atau hadiah tanpa undian agar korban mengabaikan risiko.',
+      explanationEn: 'Dangles cash prizes, giveaways, or unearned funds to induce euphoria and blind the victim to security hazards.',
+      severity: 'WARNING',
+    });
+  }
+
+  // 5. Taktik: Isolasi & Kerahasiaan (Secrecy & Isolation)
+  const tacticSecrecyRegex = /(jangan beritahu|jangan sebarkan|kode rahasia|hanya untuk anda|jangan dibagikan|bersifat rahasia|tutup rapat|jangan bicara ke orang lain|jangan bilang siapa-siapa|hanya antara kita|do not share|keep secret|do not disclose|strictly confidential|for your eyes only|private code|do not tell anyone|keep this between us)/i;
+  const secrecyMatch = text.match(tacticSecrecyRegex);
+  if (secrecyMatch) {
+    tactics.push({
+      type: 'SECRECY',
+      titleId: 'Isolasi & Kerahasiaan',
+      titleEn: 'Secrecy & Isolation',
+      matchedSnippet: secrecyMatch[0],
+      explanationId: 'Mewajibkan kerahasiaan ketat atau melarang korban berkonsultasi dengan pihak lain agar aksi penipuan tidak digagalkan oleh orang terdekat.',
+      explanationEn: 'Enforces strict confidentiality or bars consulting peers so family and friends cannot intervene to stop the fraud.',
+      severity: 'CRITICAL',
+    });
+  }
+
+  return tactics;
 }

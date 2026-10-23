@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CyberGuard.AI — Penganalisis Pesan Forensik Berbasis Bukti</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#3a475f",
+            "on-secondary-fixed": "#0e1c31",
+            "secondary-fixed-dim": "#bac7e4",
+            "primary": "#00524f",
+            "surface-container-low": "#eff4ff",
+            "secondary": "#525f78",
+            "on-error": "#ffffff",
+            "on-surface-variant": "#3f4948",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#56637c",
+            "tertiary-fixed": "#85f8c4",
+            "inverse-primary": "#89d3cf",
+            "on-background": "#0e1c2e",
+            "primary-fixed-dim": "#89d3cf",
+            "outline-variant": "#bec9c7",
+            "surface-container-high": "#dce9ff",
+            "tertiary-fixed-dim": "#68dba9",
+            "primary-container": "#176b68",
+            "on-tertiary-container": "#7df1bd",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#d7e3ff",
+            "surface-variant": "#d5e3fc",
+            "on-primary-container": "#9ee9e4",
+            "inverse-surface": "#233144",
+            "primary-fixed": "#a5f0eb",
+            "on-primary-fixed": "#00201f",
+            "secondary-container": "#d3e0fe",
+            "outline": "#6f7978",
+            "on-surface": "#0e1c2e",
+            "surface-dim": "#ccdbf3",
+            "tertiary": "#005338",
+            "on-secondary": "#ffffff",
+            "surface": "#f8f9ff",
+            "tertiary-container": "#006e4c",
+            "on-tertiary-fixed-variant": "#005137",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#e6eeff",
+            "surface-tint": "#146966",
+            "on-primary-fixed-variant": "#00504d",
+            "inverse-on-surface": "#eaf1ff",
+            "background": "#f8f9ff",
+            "on-tertiary-fixed": "#002114",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#d5e3fc"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "gutter-mobile": "1rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1.25rem",
+            "margin": "3rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-display-mobile": ["Plus Jakarta Sans"],
+            "headline-display": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["17px", { "lineHeight": "27px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-display": ["44px", { "lineHeight": "54px", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["19px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #F7F9FC;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #DCE4ED;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #bec9c7;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-primary">
+<!-- ================= TOPNAVBAR (Shared Component Source of Truth) ================= -->
+<header class="w-full sticky top-0 z-50 border-b border-outline-variant dark:border-outline bg-surface-container-lowest/95 dark:bg-inverse-surface/95 backdrop-blur-md shadow-sm">
+<div class="max-w-[1280px] mx-auto px-gutter-mobile md:px-margin h-16 flex items-center justify-between">
+<!-- Brand & Academic Tag -->
+<div class="flex items-center gap-space-sm">
+<a class="flex items-center gap-2 group" href="#">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-headline-sm font-bold shadow-xs">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</span>
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">CyberGuard.AI</span>
+</a>
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container-low text-primary border border-outline-variant/60 ml-1">
+          Edukasi &amp; Riset
+        </span>
+</div>
+<!-- Navigation Links (Active mapping: 'Analisis Pesan') -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-on-surface-variant dark:text-inverse-on-surface font-label-lg hover:text-primary dark:hover:text-inverse-primary pb-1 transition-colors duration-150" href="#">Beranda</a>
+<a class="text-primary dark:text-inverse-primary font-label-lg border-b-2 border-primary dark:border-inverse-primary pb-1" href="#">Analisis Pesan</a>
+<a class="text-on-surface-variant dark:text-inverse-on-surface font-label-lg hover:text-primary dark:hover:text-inverse-primary pb-1 transition-colors duration-150" href="#">Kuis Interaktif</a>
+<a class="text-on-surface-variant dark:text-inverse-on-surface font-label-lg hover:text-primary dark:hover:text-inverse-primary pb-1 transition-colors duration-150" href="#">Panduan</a>
+</nav>
+<!-- Trailing Action -->
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-2 bg-primary-container text-on-primary px-4 py-2 rounded-lg font-label-lg hover:bg-primary transition-colors duration-150 active:translate-y-px" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Cek Pesan Mencurigakan</span>
+</button>
+</div>
+</div>
+</header>
+<!-- ================= MAIN CONTENT WORKSPACE ================= -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-gutter-mobile md:px-margin py-8">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-label-md font-label-md text-secondary mb-2">
+<a class="hover:text-primary transition-colors" href="#">Beranda</a>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">Penganalisis Pesan Forensik</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-outline-variant/50 pb-6">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">
+            Inspeksi Pesan &amp; Bukti Rekayasa Sosial
+          </h1>
+<p class="mt-2 text-body-md font-body-md text-on-surface-variant max-w-3xl">
+            Analisis transparan berbasis bukti nyata tanpa persentase probabilitas semu. Privasi diutamakan: teks diproses lokal di peramban Anda.
+          </p>
+</div>
+<div class="flex items-center gap-2 shrink-0 bg-surface-container-lowest px-3 py-1.5 rounded-lg border border-outline-variant shadow-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-secondary">Mesin Aturan: v2.4 (Otonom)</span>
+</div>
+</div>
+</div>
+<!-- Main Workstation Layout: 12-Column Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- ================= LEFT COLUMN: INPUT & SCENARIOS (5 Columns) ================= -->
+<section aria-label="Panel Input Pesan" class="lg:col-span-5 flex flex-col gap-6">
+<!-- Privacy Callout Alert -->
+<div class="bg-[#FFFBEB] border-l-4 border-[#D97706] p-4 rounded-lg shadow-xs">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#D97706] text-[20px] shrink-0 mt-0.5">lock</span>
+<div>
+<p class="text-label-md font-label-md text-[#92400E]">Perhatian Privasi Keamanan</p>
+<p class="text-body-sm font-body-sm text-[#78350F] mt-0.5">
+                Jangan pernah memasukkan kata sandi, kode OTP, PIN perbankan, atau data rahasia pribadi lainnya ke dalam kotak formulir.
+              </p>
+</div>
+</div>
+</div>
+<!-- Interactive Scenario Presets -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-5 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<span class="text-label-md font-label-md text-secondary">Muat Contoh Skenario Nyata:</span>
+<span class="text-label-sm font-label-sm text-primary font-medium">4 Kasus Tersedia</span>
+</div>
+<div class="flex flex-wrap gap-2" id="scenario-container">
+<button class="scenario-btn active px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-primary-container bg-primary-container/10 text-primary-container font-semibold transition-all" type="button">
+              Contoh 1: Modus Resi Kurir (.APK)
+            </button>
+<button class="scenario-btn px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface-variant transition-all" type="button">
+              Contoh 2: Tagihan Pajak / Tilang ETLE
+            </button>
+<button class="scenario-btn px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface-variant transition-all" type="button">
+              Contoh 3: Hadiah Undian Marketplace
+            </button>
+<button class="scenario-btn px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface-variant transition-all" type="button">
+              Contoh 4: Pesan Resmi Normal
+            </button>
+</div>
+</div>
+<!-- Textarea Form Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-xs flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/40">
+<div>
+<label class="text-headline-sm font-headline-sm text-on-surface" for="message-input">Teks Pesan Mencurigakan</label>
+<p class="text-body-sm font-body-sm text-secondary">Tempelkan teks pesan dari WhatsApp, Telegram, atau SMS</p>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-secondary border border-outline-variant/60">
+<span class="material-symbols-outlined text-[14px] text-primary-container">memory</span>
+              Mode Heuristik
+            </span>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3.5 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 custom-scroll transition" id="message-input" placeholder="Tempelkan teks mencurigakan di sini..." rows="7">Halo Bapak/Ibu, paket pengiriman resi J&amp;X Anda tertahan di gudang logistik. Mohon segera unduh &amp; pasang file Surat_Resi_Pengiriman.apk untuk verifikasi pelacakan sebelum dibatalkan otomatis sore ini.</textarea>
+</div>
+<!-- Counter and Clear action -->
+<div class="flex items-center justify-between text-label-sm font-label-sm text-secondary pt-1">
+<span id="char-counter">184 / 2000 karakter</span>
+<button class="text-secondary hover:text-error transition-colors flex items-center gap-1" id="btn-clear" type="button">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+              Hapus Teks
+            </button>
+</div>
+<!-- Actions -->
+<div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+<button class="w-full sm:flex-1 inline-flex items-center justify-center gap-2 bg-primary-container text-on-primary py-2.5 px-5 rounded-lg font-label-lg hover:bg-primary transition-all duration-150 active:translate-y-px shadow-xs" id="btn-analyze" type="button">
+<span class="material-symbols-outlined text-[20px]">manage_search</span>
+<span>Periksa Pesan Sekarang</span>
+</button>
+<button class="w-full sm:w-auto px-4 py-2.5 rounded-lg font-label-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" id="btn-reset" type="button">
+              Reset
+            </button>
+</div>
+<!-- Micro Trust Badge -->
+<div class="mt-2 pt-4 border-t border-outline-variant/40 flex items-center gap-2.5 text-body-sm font-body-sm text-secondary">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">verified</span>
+<span>100% Client-Side Processing. Data Anda tidak disimpan atau dikirim ke server luar.</span>
+</div>
+</div>
+</section>
+<!-- ================= RIGHT COLUMN: FORENSIC EVIDENCE BREAKDOWN (7 Columns) ================= -->
+<section aria-label="Hasil Analisis Forensik" class="lg:col-span-7 flex flex-col gap-6">
+<!-- 1. Executive Risk Summary Header Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-xs border-l-4 border-l-[#DC2626]">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-outline-variant/50">
+<div>
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider block mb-1">Status Penilaian Bukti</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FEF2F2] border border-[#DC2626]/20 text-[#DC2626] font-label-lg">
+<span class="material-symbols-outlined text-[18px]">gpp_maybe</span>
+<span class="tracking-wide">RISIKO TINGGI (High Risk)</span>
+</div>
+</div>
+<div class="text-left sm:text-right">
+<span class="text-label-sm font-label-sm text-secondary block">Metodologi Forensik</span>
+<span class="text-label-md font-label-md text-on-surface">Deteksi Rekayasa Sosial Heuristik</span>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface rounded-lg p-3 border border-outline-variant/60">
+<span class="text-label-sm font-label-sm text-secondary block">Ringkasan Bukti</span>
+<span class="text-body-md font-body-md font-medium text-on-surface mt-0.5 block">
+                Ditemukan 3 indikator kuat manipulasi psikologis &amp; teknis.
+              </span>
+</div>
+<div class="bg-surface rounded-lg p-3 border border-outline-variant/60">
+<span class="text-label-sm font-label-sm text-secondary block">Vektor &amp; Ancaman</span>
+<span class="text-body-md font-body-md font-medium text-on-surface mt-0.5 block">
+                Tingkat: Kritis | Vektor: Smishing &amp; Trojan .APK
+              </span>
+</div>
+</div>
+</div>
+<!-- 2. Discovered Evidence Cards (Bukti yang Ditemukan) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-xs">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[22px]">policy</span>
+              Temuan Indikator Rekayasa Sosial
+            </h2>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-[#FEF2F2] text-[#DC2626] font-semibold border border-[#DC2626]/20">
+              3 Terdeteksi
+            </span>
+</div>
+<div class="space-y-3.5">
+<!-- Indikator 1 -->
+<div class="p-4 rounded-lg bg-surface border border-outline-variant/70 border-l-4 border-l-[#D97706] transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#B45309] font-semibold border border-[#D97706]/30">
+                  Taktik: Urgensi Palsu
+                </span>
+<span class="text-label-sm font-label-sm text-secondary">Manipulasi Psikologis</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface">
+                Mengancam paket <strong class="text-on-surface font-semibold">“dibatalkan otomatis sore ini”</strong> guna memicu kepanikan dan menekan calon korban agar bertindak terburu-buru tanpa memverifikasi fakta.
+              </p>
+</div>
+<!-- Indikator 2 -->
+<div class="p-4 rounded-lg bg-surface border border-outline-variant/70 border-l-4 border-l-[#DC2626] transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FEF2F2] text-[#DC2626] font-semibold border border-[#DC2626]/30">
+                  Teknis: Payload File .APK
+                </span>
+<span class="text-label-sm font-label-sm text-secondary">Ancaman Malware</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface">
+                Meminta target memasang <strong class="text-on-surface font-semibold">“Surat_Resi_Pengiriman.apk”</strong>. File paket aplikasi Android liar di luar Play Store ini berfungsi sebagai Trojan sniffer untuk mencuri SMS OTP dan kredensial perbankan.
+              </p>
+</div>
+<!-- Indikator 3 -->
+<div class="p-4 rounded-lg bg-surface border border-outline-variant/70 border-l-4 border-l-[#D97706] transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#B45309] font-semibold border border-[#D97706]/30">
+                  Identitas: Pengirim Asing
+                </span>
+<span class="text-label-sm font-label-sm text-secondary">Anomali Pengirim</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface">
+                Mengklaim sebagai otoritas logistik resmi (<span class="font-mono text-sm bg-surface-container-highest px-1 rounded">J&amp;X</span>) namun menggunakan nomor seluler pribadi seluler GSM reguler tanpa verifikasi <em class="not-italic font-semibold text-tertiary">Official Business Account</em> bercentang hijau.
+              </p>
+</div>
+</div>
+</div>
+<!-- 3. Plain-Language Reasoning Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-xs">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[22px]">lightbulb</span>
+            Mengapa Pesan Ini Berbahaya?
+          </h2>
+<div class="text-body-md font-body-md text-on-surface-variant space-y-3 leading-relaxed">
+<p>
+              Pesan ini meniru gaya bahasa korporasi ekspedisi logistik untuk menciptakan kondisi darurat palsu. Secara arsitektur keamanan, <strong class="text-on-surface font-semibold">perusahaan logistik legal TIDAK PERNAH mendistribusikan berkas pelacakan resi dalam bentuk arsip installer (.apk)</strong>.
+            </p>
+<p>
+              Segala bentuk pelacakan barang resmi selalu menggunakan format nomor tanda terima (resi) alfanumerik yang diperiksa secara independen melalui peramban web resmi ataupun aplikasi resmi yang diunduh langsung dari Google Play Store / Apple App Store.
+            </p>
+</div>
+</div>
+<!-- 4. Recommended Next Steps / Mitigation Checklist -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-xs">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-[22px]">checklist</span>
+              Protokol Tindakan Mitigasi Segera
+            </h2>
+<span class="text-label-sm font-label-sm text-secondary">Pedoman Respons Insiden</span>
+</div>
+<div class="space-y-3" id="mitigation-list">
+<label class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant/60 bg-surface hover:bg-surface-container-low transition-colors cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary-container border-outline focus:ring-primary-container/20 accent-[#176B68]" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface">
+<strong>JANGAN PERNAH</strong> sentuh tautan, unduh, atau izinkan pemasangan berkas berkestensi <code class="bg-surface-container-highest px-1.5 py-0.5 rounded text-xs font-mono">.apk</code> yang dilampirkan.
+              </span>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant/60 bg-surface hover:bg-surface-container-low transition-colors cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary-container border-outline focus:ring-primary-container/20 accent-[#176B68]" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface">
+                Blokir nomor pengirim seketika dan tandai sebagai <strong>Spam / Penipuan</strong> pada aplikasi WhatsApp atau pengelola SMS Anda.
+              </span>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant/60 bg-surface hover:bg-surface-container-low transition-colors cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary-container border-outline focus:ring-primary-container/20 accent-[#176B68]" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface">
+                Laporkan indikasi kejahatan siber ini ke portal pengaduan pemerintah resmi seperti <a class="text-primary-container underline hover:text-primary" href="https://aduankonten.id" target="_blank">aduankonten.id</a> atau kanal resmi kepolisian.
+              </span>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant/60 bg-surface hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="mt-1 w-4 h-4 rounded text-primary-container border-outline focus:ring-primary-container/20 accent-[#176B68]" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface">
+<span class="text-error font-semibold">Jika sudah terlanjur mengunduh/memasang:</span> Aktifkan segera <em>Airplane Mode</em> (Mode Pesawat), cabut kartu SIM, lalu segera hubungi bank penerbit rekening Anda untuk pembekuan darurat.
+              </span>
+</label>
+</div>
+</div>
+<!-- 5. Transparent Academic Disclaimer -->
+<div class="p-4 rounded-lg border border-outline-variant/60 bg-surface-container-low text-secondary flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-primary-container shrink-0 mt-0.5">info</span>
+<p class="text-body-sm font-body-sm">
+<strong>Batasan Deteksi &amp; Tanggung Jawab Sivitas:</strong> Analisis ini bersifat indikatif pedagogis menggunakan kerangka heuristik rekayasa sosial, bukan pengganti verifikasi investigasi yudisial. Pegang teguh prinsip literasi digital: <em>Think Before You Click</em>.
+          </p>
+</div>
+</section>
+</div>
+</main>
+<!-- ================= INSTITUTIONAL FOOTER (Shared Component Source of Truth) ================= -->
+<footer class="w-full border-t border-outline-variant dark:border-outline py-space-xl px-margin bg-surface-container dark:bg-inverse-surface mt-16">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Logo & Academic Copyright -->
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">CyberGuard.AI</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-surface-dim text-center md:text-left">
+          © 2025 CyberGuard.AI — Inisiatif Edukasi Keamanan Digital &amp; Rekayasa Sosial Nasional.
+        </p>
+</div>
+<!-- Institutional Links -->
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-on-surface-variant dark:text-surface-dim font-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">
+          Kerangka Verifikasi Digital
+        </a>
+<a class="text-on-surface-variant dark:text-surface-dim font-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">
+          Kebijakan Privasi &amp; Data
+        </a>
+<a class="text-on-surface-variant dark:text-surface-dim font-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">
+          Metodologi Analisis
+        </a>
+<a class="text-on-surface-variant dark:text-surface-dim font-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">
+          Kontak Riset Sivitas
+        </a>
+</div>
+</div>
+</footer>
+<!-- ================= INTERACTIVE SCRIPT (Vanilla micro-interactions) ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const textarea = document.getElementById('message-input');
+      const counter = document.getElementById('char-counter');
+      const btnClear = document.getElementById('btn-clear');
+      const btnReset = document.getElementById('btn-reset');
+      const btnAnalyze = document.getElementById('btn-analyze');
+      const scenarioButtons = document.querySelectorAll('.scenario-btn');
+
+      const scenarios = [
+        {
+          text: "Halo Bapak/Ibu, paket pengiriman resi J&X Anda tertahan di gudang logistik. Mohon segera unduh & pasang file Surat_Resi_Pengiriman.apk untuk verifikasi pelacakan sebelum dibatalkan otomatis sore ini."
+        },
+        {
+          text: "PEMBERITAHUAN POLRI: Kendaraan Anda tertangkap kamera ETLE melanggar batas kecepatan di Tol Cipularang. Buka surat konfirmasi tilang elektronik melalui aplikasi tilang_etle_v2.apk dalam 1x24 jam untuk mencegah pemblokiran STNK."
+        },
+        {
+          text: "Selamat! Nomor Anda terpilih memenangkan gebyar undian akhir tahun Rp 45.000.000 dari ShopeePay. Klaim hadiah segera dengan mengklik tautan bit.ly/shopee-hadiah45jt sebelum kuota hangus malam ini."
+        },
+        {
+          text: "Pesanan Tokopedia Anda #INV/20250215/MPX/99201 telah diserahkan kepada kurir SiCepat dengan nomor resi 003921829101. Lacak status pesanan secara berkala melalui menu Pesanan Saya di aplikasi Tokopedia."
+        }
+      ];
+
+      function updateCounter() {
+        const len = textarea.value.length;
+        counter.textContent = `${len} / 2000 karakter`;
+      }
+
+      textarea.addEventListener('input', updateCounter);
+
+      btnClear.addEventListener('click', () => {
+        textarea.value = '';
+        updateCounter();
+        textarea.focus();
+      });
+
+      btnReset.addEventListener('click', () => {
+        textarea.value = scenarios[0].text;
+        updateCounter();
+        scenarioButtons.forEach((btn, idx) => {
+          if (idx === 0) {
+            btn.className = "scenario-btn active px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-primary-container bg-primary-container/10 text-primary-container font-semibold transition-all";
+          } else {
+            btn.className = "scenario-btn px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface-variant transition-all";
+          }
+        });
+      });
+
+      scenarioButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          scenarioButtons.forEach(b => {
+            b.className = "scenario-btn px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface-variant transition-all";
+          });
+          btn.className = "scenario-btn active px-3 py-1.5 rounded-full text-label-sm font-label-sm border border-primary-container bg-primary-container/10 text-primary-container font-semibold transition-all";
+          
+          if (scenarios[index]) {
+            textarea.value = scenarios[index].text;
+            updateCounter();
+          }
+        });
+      });
+
+      btnAnalyze.addEventListener('click', () => {
+        btnAnalyze.classList.add('opacity-80');
+        const originalContent = btnAnalyze.innerHTML;
+        btnAnalyze.innerHTML = `
+          <span class="material-symbols-outlined text-[20px] animate-spin">refresh</span>
+          <span>Menganalisis Bukti...</span>
+        `;
+        setTimeout(() => {
+          btnAnalyze.innerHTML = originalContent;
+          btnAnalyze.classList.remove('opacity-80');
+        }, 400);
+      });
+
+      updateCounter();
+    });
+  </script>
+</body></html>

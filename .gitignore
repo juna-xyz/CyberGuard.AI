@@ -11,6 +11,10 @@ dist-ssr
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+*credentials*.json
+*service-account*.json
 
 # Logs
 npm-debug.log*

@@ -38,9 +38,9 @@
   <!-- Central Dynamic Pivot & Hub -->
   <circle cx="180" cy="180" r="28" fill="#FFFFFF" stroke="#DCE4ED" stroke-width="2" />
   <circle cx="180" cy="180" r="14" fill="#152238" />
-  <circle cx="180" cy="180" r="5" fill="#176B68" />
+  <circle cx="180" cy="180" r="5" fill="#2563EB" />
 
   <!-- Indicative Radar Scan Sweep Lines -->
   <line x1="180" y1="180" x2="180" y2="76" stroke="#152238" stroke-width="3" stroke-linecap="round" opacity="0.8" />
-  <circle cx="180" cy="74" r="5" fill="#176B68" stroke="#FFFFFF" stroke-width="1.5" />
+  <circle cx="180" cy="74" r="5" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5" />
 </svg>

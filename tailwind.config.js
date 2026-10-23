@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -26,6 +27,8 @@ export default {
           hover: 'var(--color-brand-hover)',
           soft: 'var(--color-brand-soft)',
           border: 'var(--color-brand-border)',
+          deep: 'var(--color-brand-deep)',
+          highlight: 'var(--color-brand-highlight)',
         },
         risk: {
           high: {
